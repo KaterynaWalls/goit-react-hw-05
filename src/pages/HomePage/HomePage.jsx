@@ -15,7 +15,7 @@ const HomePage = () => {
       setError(null);
       try {
         const results = await fetchTrendingMovies();
-        console.log("Trending Movies in HomePage:", results);
+       
         setMovies(results);
       } catch (error) {
         setError(error.message || "Failed to fetch trending movies.");

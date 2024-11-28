@@ -4,6 +4,7 @@ import { searchMovies } from "../../services/api";
 import MovieList from "../../components/MovieList/MovieList";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import SearchBar from "../../components/SearchBar/SearchBar";
 import s from "./MoviesPages.module.css";
 
 const MoviesPage = () => {
@@ -15,49 +16,38 @@ const MoviesPage = () => {
 
   const query = searchParams.get("query") || "";
   const page = parseInt(searchParams.get("page")) || 1;
-  const [inputValue, setInputValue] = useState(query);
 
-  // Синхронізація значення input з URL
-  useEffect(() => {
-    setInputValue(query);
-  }, [query]);
 
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
-  };
+ const handleSubmit = (value) =>  {
+  if(!value) {
+    setSearchParams({});
+  setMovies([]);
+  setError(null);
+  setTotalResults(0);
+  return;
+ }
+ 
+setSearchParams({ query: value, page: 1});
+// setError(null);
+};
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const trimmedQuery = inputValue.trim();
+const handlePageChange = (direction) => {
+  if (!movies.length) return;
 
-    if (!trimmedQuery) {
-      setSearchParams({});
-      setMovies([]);
-      setError(null); // Скидаємо помилку
-      setTotalResults(0);
-      return;
-    }
+  const newPage =
+    direction === "next"
+      ? Math.min(page + 1, Math.ceil(totalResults / 20))
+      : Math.max(1, page - 1);
 
-    setSearchParams({ query: trimmedQuery, page: 1 });
-    setError(null); // Скидаємо помилку перед новим запитом
-  };
+  setSearchParams({ query, page: newPage });
+};
 
-  const handlePageChange = (direction) => {
-    if (!movies.length) return;
 
-    const newPage =
-      direction === "next"
-        ? Math.min(page + 1, Math.ceil(totalResults / 20))
-        : Math.max(1, page - 1);
-
-    setSearchParams({ query, page: newPage });
-  };
-
-  useEffect(() => {
+   useEffect(() => {
     if (!query) {
-      setMovies([]);
-      setTotalResults(0);
-      setError(null); // Скидаємо помилку, якщо запиту немає
+      // setMovies([]);
+      // setTotalResults(0);
+      // setError(null); 
       return;
     }
 
@@ -71,11 +61,11 @@ const MoviesPage = () => {
         setTotalResults(total_results);
 
         if (results.length === 0) {
-          setError("not_found"); // Помилка "нічого не знайдено"
+          setError("not_found"); 
         }
       } catch (err) {
         console.error("Fetch failed:", err);
-        setError("network"); // Тип помилки для ErrorMessage
+        setError("network"); 
       } finally {
         setLoading(false);
       }
@@ -89,19 +79,8 @@ const MoviesPage = () => {
   return (
     <div className={s.container}>
       <h2 className={s.homeText}>Ready for action, drama, or comedy?</h2>
-      <form className={s.form} onSubmit={handleSubmit}>
-        <input
-          className={s.input}
-          type="text"
-          value={inputValue}
-          onChange={handleInputChange}
-          placeholder="Let's find your blockbuster!"
-          aria-label="Movie search input"
-        />
-        <button className={s.btnSearch} type="submit">
-          Search
-        </button>
-      </form>
+     <SearchBar onSubmit={handleSubmit} />
+
 
       {loading && <Loader />}
       {error && !loading && <ErrorMessage errorType={error} />}
@@ -134,6 +113,7 @@ const MoviesPage = () => {
       )}
     </div>
   );
-};
+}
+
 
 export default MoviesPage;

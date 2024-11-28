@@ -1,27 +1,27 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import PropTypes from "prop-types";
-import styles from "./ErrorMessage.module.css";
+import s from "./ErrorMessage.module.css";
 
-const ErrorMessage = ({ errorType }) => {
+const ErrorMessage = ({ errorType = "default" }) => {
   const errorConfig = {
     not_found: {
       message: "Nothing was found. Please try a different query.",
-      className: styles.notFound,
+      className: s.notFound,
     },
     network: {
       message:
         "Network issues detected. Please check your internet connection and try again.",
-      className: styles.networkError,
+      className: s.networkError,
     },
     server: {
       message:
         "A server error occurred. We are working to fix it. Please try again later.",
-      className: styles.serverError,
+      className: s.serverError,
     },
     default: {
       message: "Something went wrong. Please try again later.",
-      className: styles.defaultError,
+      className: s.defaultError,
     },
   };
 
@@ -35,7 +35,7 @@ const ErrorMessage = ({ errorType }) => {
 };
 
 ErrorMessage.propTypes = {
-  errorType: PropTypes.string.isRequired,
+  errorType: PropTypes.string,
 };
 
 export default ErrorMessage;

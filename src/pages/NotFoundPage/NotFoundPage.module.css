@@ -15,6 +15,12 @@
   
   .title {
     margin-bottom: 20px;
+    font-size: 24px;
+
+  }
+  .message {
+    margin-top: 20px;
+    font-size: 1.2rem;
   }
   .backHome {
     color: aliceblue;

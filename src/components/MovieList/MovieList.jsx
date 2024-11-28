@@ -6,6 +6,10 @@ const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
 const MovieList = ({ movies }) => {
   const location = useLocation();
+
+  if (!movies || !movies.length) {
+    return <p>No movies found.</p>;
+  }
   return (
     <ul className={s.movieList}>
       {movies.map((movie) => (

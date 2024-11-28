@@ -1,6 +1,6 @@
 import {  NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 import { fetchMovieDetails } from "../../services/api";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useState, useRef} from "react";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import PlaceholderImage from "../../components/PlaceholderImage/PlaceholderImage";
@@ -10,7 +10,7 @@ const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
 const MovieDetailsPage = () => {
   const location = useLocation();
-  const goBack = location.state?.from || "/movies";
+  const backLink = useRef(location.state?.from || "/movies");
   const { movieId } = useParams();
   const [item, setItem] = useState(null);
   const [error, setError] = useState(null);
@@ -42,7 +42,7 @@ const MovieDetailsPage = () => {
       <article className={s.movieDetails}>
         <div className={s.header}>
           {/* Back Button */}
-          <NavLink to={goBack} className={s.btnGoBack}>
+          <NavLink to={backLink.current} className={s.btnGoBack}>
             ⬅ Go Back
           </NavLink>
           <h1 className={s.title}>{item.title || "No title available"}</h1>

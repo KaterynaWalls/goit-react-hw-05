@@ -1,0 +1,50 @@
+.form {
+    display: flex;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.input {
+    padding: 10px;
+    flex-grow: 1;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    max-width: 100%;
+    width: 300px;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #d2dddf;
+    box-shadow: 0px 0px 5px rgba(127, 174, 184, 0.5);
+}
+
+input::placeholder {
+    color:   #55585c;;
+    font-size: 18px;
+    font-weight: 400;
+    font-style: italic;
+    opacity: 0.7;
+}
+
+.btnSearch {
+    padding: 10px 20px;
+    border: none;
+    background-color: #444c4d;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btnSearch:hover {
+    background-color: #2992b3b8;
+    transform: scale(1.05);
+}
+
+.btnSearch:active {
+    transform: scale(0.95);
+}
