@@ -1,0 +1,46 @@
+/* Navigation.module.css */
+.header {
+  /* background-color: #282c34;  */
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+.navigation {
+  display: flex;
+  gap: 20px;
+}
+
+.link {
+  text-decoration: none;
+  color: #55585c;
+  font-size: 30px;
+  font-weight: 700;
+  transition: color 0.3s ease-in-out;
+  /* background-color: #ebc1c1b8; */
+  border-radius: 20px;
+  padding: 8px;
+  margin-right: 50px;
+}
+
+.link:hover {
+  color: rgb(71 138 138 / 47%);
+
+}
+
+.active {
+  text-decoration: none;
+  color: #55585c;
+  font-size: 30px;
+  font-weight: 700;
+  transition: color 0.3s ease-in-out;
+  background-color: #d7b2b2;
+  border-radius: 20px;
+  padding: 8px;
+  margin-right: 50px;
+}

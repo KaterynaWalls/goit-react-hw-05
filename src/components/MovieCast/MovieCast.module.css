@@ -1,0 +1,37 @@
+.castContainer {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    /* background-color: #f9f9f9; */
+    /* border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); */
+}
+
+.castList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.item {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.item:last-child {
+    border-bottom: none; /* Видалення лінії для останнього елемента */
+}
+
+.actorName {
+    font-weight: bold;
+    color: #2c3e50;
+    margin-right: 10px;
+}
+
+.character {
+    font-style: italic;
+    color: #7f8c8d;
+}

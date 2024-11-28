@@ -1,0 +1,77 @@
+.pageContainer{
+  max-width: 100%;
+  background-color: rgb(230, 214, 216);
+}
+.innerContainer {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.moviesBackground {
+  background-image: url("./assets//9619a06f-6447-4b6c-8ef7-1257e2cc0982.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  position: relative; 
+  /* overflow: hidden; */
+  z-index: 0;
+
+  
+}
+
+.moviesBackground::before {
+  content: '';
+  background-size: cover;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  left: -25px;
+}
+
+.moviesBackground::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5); 
+  pointer-events: none; 
+
+  z-index: 1;
+}
+
+.moviesBackground .searchForm,
+.moviesBackground .homeText {
+  position: relative;
+  z-index: 2; 
+}
+
+.moviesBackground .searchForm {
+  background: rgba(255, 255, 255, 0.8); 
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.moviesBackground h2 {
+  text-shadow: 2px 4px 6px rgba(255, 255, 255, 0.5);
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.homeBackground {
+  background-color:rgba(202, 230, 230, 0.699); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
